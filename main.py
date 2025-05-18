@@ -18,6 +18,8 @@ import threading
 from tkinter import Label
 from tkinter import Tk, Canvas, PhotoImage
 import json
+import base64
+from cryptography.fernet import Fernet
 
 # Global variable to track Firebase initialization
 firebase_initialized = False
@@ -30,37 +32,65 @@ def resource_path(relative_path):
 
     return os.path.join(base_path, relative_path)
 
+def get_firebase_credentials():
+    try:
+        machine_id = os.name + sys.platform
+        key_material = machine_id.encode() + b'hangman_secure_key'
+        import hashlib
+        key_hash = hashlib.sha256(key_material).digest()
+        key = base64.urlsafe_b64encode(key_hash[:32])
+
+        encrypted_file_path = resource_path('encrypted_credentials.txt')
+        if not os.path.exists(encrypted_file_path):
+            raise FileNotFoundError(f"Credentials file not found: {encrypted_file_path}")
+            
+        with open(encrypted_file_path, 'rb') as f:
+            encrypted_creds = f.read()
+        
+        cipher = Fernet(key)
+        decrypted_data = cipher.decrypt(encrypted_creds)
+        cred_data = json.loads(decrypted_data)
+        return cred_data
+    except FileNotFoundError as e:
+        print(f"Error: {str(e)}")
+        print("Please run encrypt_credentials.py to generate the encrypted credentials file.")
+        return None
+    except Exception as e:
+        print(f"Error decrypting credentials: {str(e)}")
+        return None
+
 def initialize_firebase():
     global firebase_initialized
     if not firebase_initialized:
         # Initialize Firebase Admin SDK
-        cred_path = resource_path("credentials.json")
-        cred = credentials.Certificate(cred_path)
-        
-        # Read database URL from credentials file
-        with open(cred_path, 'r') as f:
-            cred_data = json.load(f)
-            db_url = cred_data.get('databaseURL')
-            
-        if not db_url:
-            messagebox.showerror("Configuration Error", "Database URL not found in credentials.json")
-            sys.exit(1)
-            
-        firebase_admin.initialize_app(
-            cred,
-            {
-                "databaseURL": db_url
-            },
-        )
-        firebase_initialized = True
-        # Check if there is a connection to the Firebase Realtime Database and time out after 10 seconds
         try:
-            response = requests.get(db_url, timeout=10)
-            if response.status_code == 200:
-                print("Connected to Firebase Realtime Database")
-        except requests.exceptions.RequestException:
-            # Show an error message if there is no connection to the Firebase Realtime Database
-            messagebox.showerror("Connection Error", "Failed to connect to Firebase Realtime Database. Please check your internet connection.")
+            cred_data = get_firebase_credentials()
+            if not cred_data:
+                messagebox.showerror("Credential Error", "Failed to decrypt Firebase credentials")
+                sys.exit(1)
+                
+            cred = credentials.Certificate(cred_data)
+            
+            firebase_admin.initialize_app(
+                cred,
+                {
+                    "databaseURL": cred_data.get("databaseURL")
+                },
+            )
+            firebase_initialized = True
+            
+            # Check if there is a connection to the Firebase Realtime Database and time out after 10 seconds
+            try:
+                db_url = cred_data.get("databaseURL")
+                response = requests.get(db_url, timeout=10)
+                if response.status_code == 200:
+                    print("Connected to Firebase Realtime Database")
+            except requests.exceptions.RequestException:
+                # Show an error message if there is no connection to the Firebase Realtime Database
+                messagebox.showerror("Connection Error", "Failed to connect to Firebase Realtime Database. Please check your internet connection.")
+                sys.exit(1)
+        except Exception as e:
+            messagebox.showerror("Firebase Error", f"Error initializing Firebase: {str(e)}")
             sys.exit(1)
 
 class CreativeLoginApp:  

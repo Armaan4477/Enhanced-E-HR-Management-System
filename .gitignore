@@ -3,3 +3,6 @@
 credentials.json
 /output
 .DS_Store
+/build
+/dist
+encrypted_credentials.txt
