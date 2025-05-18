@@ -2,3 +2,4 @@
 *.pyc
 credentials.json
 /output
+.DS_Store
