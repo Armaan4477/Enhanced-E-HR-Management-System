@@ -132,7 +132,7 @@ class Manager_class:
         )
         self.submit_performance_review_button.place(relx=0.5, rely=0.8, anchor="center", width=300, height=50)
 
-        profile_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "profile.png")
+        profile_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/profile.png")
         profile_image = Image.open(profile_path)
         profile_image = profile_image.resize((50, 50))
         profile_image = ImageTk.PhotoImage(profile_image)
@@ -148,7 +148,7 @@ class Manager_class:
         profile_button.pack()
         profile_button.place(relx=0.95, rely=0.05, anchor="ne")
         
-        logout_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "logout.png")
+        logout_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/logout.png")
         logout_image = Image.open(logout_path)
         logout_image = logout_image.resize((50, 50))
         logout_image = ImageTk.PhotoImage(logout_image)
@@ -192,7 +192,7 @@ class Manager_class:
 
     def load_image_manager(self,username):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_manager_logo_image = Image.open(img_path)
@@ -490,7 +490,7 @@ class Manager_class:
             
     def load_image_employee_review(self):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_employee_review_logo_image = Image.open(img_path)
@@ -522,7 +522,7 @@ class Manager_class:
 
     def load_image_review_approval(self):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_review_approval_logo_image = Image.open(img_path)
@@ -684,7 +684,7 @@ class Manager_class:
                 
     def load_image_approve_leaves(self,username):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_approve_leaves_logo_image = Image.open(img_path)
@@ -1051,7 +1051,7 @@ class Manager_class:
     def load_image_employee_details(self):
 
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_employee_details_logo_image = Image.open(img_path)
@@ -1238,7 +1238,7 @@ class Manager_class:
         
     def load_image_resignation(self):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_resignation_logo_image = Image.open(img_path)
@@ -1345,7 +1345,7 @@ class Manager_class:
         
     def load_image_promotion_request(self):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_promotion_request_logo_image = Image.open(img_path)
@@ -1515,7 +1515,7 @@ class Manager_class:
         
     def load_image_promote_employee(self):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_promote_employee_logo_image = Image.open(img_path)
@@ -1660,7 +1660,7 @@ class Manager_class:
     
     def load_image_approve_resignation(self):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_approve_resignation_logo_image = Image.open(img_path)
@@ -1757,7 +1757,7 @@ class Manager_class:
     def load_image_bonus_request(self):
             
             # Construct the full path to the image file based on role and username
-            img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+            img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
             # Load image and adjust canvas size
             self.original_bonus_request_logo_image = Image.open(img_path)
@@ -1904,7 +1904,7 @@ class Manager_class:
             
     def load_image_employee_details_new2(self,employee_name):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_employee_details_logo_image = Image.open(img_path)
@@ -2048,7 +2048,7 @@ class Manager_class:
             
     def load_image_performance_review(self):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_performance_review_logo_image = Image.open(img_path)
@@ -2148,7 +2148,7 @@ class Manager_class:
     
     def load_image_profile(self,username,role):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_profile_image = Image.open(img_path)
@@ -2239,7 +2239,7 @@ class Manager_class:
     
     def change_password_load_image(self):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_change_password_image = Image.open(img_path)

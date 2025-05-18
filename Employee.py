@@ -55,7 +55,7 @@ class Employee_class:
         #add buttons and use a function to place them in the canvas
         self.add_buttons_to_canvas_employee(username)
 
-        profile_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "profile.png")
+        profile_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/profile.png")
         profile_image = Image.open(profile_path)
         profile_image = profile_image.resize((50, 50))
         profile_image = ImageTk.PhotoImage(profile_image)
@@ -71,7 +71,7 @@ class Employee_class:
         profile_button.pack()
         profile_button.place(relx=0.95, rely=0.05, anchor="ne")
         
-        logout_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "logout.png")
+        logout_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/logout.png")
         logout_image = Image.open(logout_path)
         logout_image = logout_image.resize((50, 50))
         logout_image = ImageTk.PhotoImage(logout_image)
@@ -204,7 +204,7 @@ class Employee_class:
 
     def load_image_employee(self,username):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_employee_logo_image = Image.open(img_path)
@@ -259,7 +259,7 @@ class Employee_class:
 
     def apply_for_vacation_days_load_image(self):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_apply_for_vacation_days_logo_image = Image.open(img_path)
@@ -441,7 +441,7 @@ class Employee_class:
 
     def apply_for_resignation_load_image(self):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_apply_for_resignation_logo_image = Image.open(img_path)
@@ -571,7 +571,7 @@ class Employee_class:
     def resize_canvas_and_image_submit_survey(self,):
 
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_submit_survey_logo_image = Image.open(img_path)
@@ -806,7 +806,7 @@ class Employee_class:
 
     def submit_complaint_load_image(self):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_submit_complaint_logo_image = Image.open(img_path)
@@ -949,7 +949,7 @@ class Employee_class:
 
     def submit_performance_review_load_image(self):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_submit_performance_review_logo_image = Image.open(img_path)
@@ -1251,7 +1251,7 @@ class Employee_class:
         
     def change_password_load_image(self):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_change_password_logo_image = Image.open(img_path)
@@ -1311,7 +1311,7 @@ class Employee_class:
     
     def load_image_profile(self,username,role):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_profile_image = Image.open(img_path)

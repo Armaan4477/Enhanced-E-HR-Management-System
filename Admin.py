@@ -22,7 +22,7 @@ class Admin_class():
         self.root.title("Admin Window")
 
     def load_image_common(self):
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         try:
             self.original_common_image = Image.open(img_path)
@@ -134,7 +134,7 @@ class Admin_class():
             relx=0.5, rely=0.7, anchor="center", width=200, height=30
         )
         
-        profile_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "profile.png")
+        profile_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/profile.png")
         profile_image = Image.open(profile_path)
         profile_image = profile_image.resize((50, 50))
         profile_image = ImageTk.PhotoImage(profile_image)
@@ -150,7 +150,7 @@ class Admin_class():
         profile_button.pack()
         profile_button.place(relx=0.95, rely=0.05, anchor="ne")
 
-        logout_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "logout.png")
+        logout_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/logout.png")
         logout_image = Image.open(logout_path)
         logout_image = logout_image.resize((50, 50))
         logout_image = ImageTk.PhotoImage(logout_image)
@@ -306,7 +306,7 @@ class Admin_class():
         
     def load_image_add_login_from_hr(self):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_add_login_from_adminimage = Image.open(img_path)
@@ -560,7 +560,7 @@ class Admin_class():
             
     def load_image_create_hr(self):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_create_hr_logo_image = Image.open(img_path)
@@ -670,7 +670,7 @@ class Admin_class():
         
     def load_image_approve_resignation(self):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_approve_resignation_image = Image.open(img_path)
@@ -767,7 +767,7 @@ class Admin_class():
     def load_image_admin(self, username):
         try:
             # Construct the full path to the image file based on role and username
-            img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+            img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
             # Load image and adjust canvas size
             self.original_admin_logo_image = Image.open(img_path)
@@ -938,7 +938,7 @@ class Admin_class():
         
     def load_image_profile(self,username,role):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_profile_image = Image.open(img_path)

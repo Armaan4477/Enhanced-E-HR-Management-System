@@ -106,7 +106,7 @@ class CreativeLoginApp:
 
         # Construct the full path to the image file
         img_path = os.path.join(
-            os.path.dirname(os.path.realpath(__file__)), "HR_background.png"
+            os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png"
         )
 
         # Focus on window
@@ -312,7 +312,7 @@ class CreativeLoginApp:
         
     def load_image_profile(self,username,role):
         # Construct the full path to the image file based on role and username
-        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "HR_background.png")
+        img_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "images/HR_background.png")
 
         # Load image and adjust canvas size
         self.original_profile_image = Image.open(img_path)
