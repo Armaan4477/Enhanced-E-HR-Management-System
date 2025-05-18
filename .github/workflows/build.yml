@@ -1,0 +1,237 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-macos-x64:
+    runs-on: macos-13
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Create credentials file
+        run: echo '${{ secrets.CREDENTIALS_JSON }}' > credentials.json
+
+      - name: Install dependencies
+        run: |
+          pip3 install -r requirements.txt
+          pip3 install pyinstaller
+
+      - name: Generate encrypted credentials
+        run: python3 encrypt_credentials.py
+
+      - name: Build for macOS
+        run: |
+          pyinstaller --windowed \
+          --name="E-HR Mgnt System" \
+          --add-data="images:images" \
+          --add-data="encrypted_credentials.txt:." \
+          --add-data "Admin.py:." \
+          --add-data "Employee.py:." \
+          --add-data "Manager.py:." \
+          --add-data "HR.py:." \
+          main.py
+
+      - name: Install create-dmg
+        run: brew install create-dmg
+
+      - name: Create DMG
+        run: |
+          cd dist
+          create-dmg \
+            --volname "E-HR Mgnt System" \
+            --window-pos 200 120 \
+            --window-size 400 400 \
+            --icon-size 128 \
+            --icon "E-HR Mgnt System.app" 100 150 \
+            --app-drop-link 300 150 \
+            --no-internet-enable \
+            "E-HR Mgnt System(macos-x64).dmg" \
+            "E-HR Mgnt System.app"
+
+      - name: Upload macOS DMG
+        uses: actions/upload-artifact@v4
+        with:
+          name: Hangman(macOS x64)
+          path: dist/E-HR Mgnt System(macos-x64).dmg
+
+  build-macos-arm:
+    runs-on: macos-15
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Create credentials file
+        run: echo '${{ secrets.CREDENTIALS_JSON }}' > credentials.json
+
+      - name: Install dependencies
+        run: |
+          pip3 install -r requirements.txt --break-system-packages
+          pip3 install pyinstaller --break-system-packages
+
+      - name: Generate encrypted credentials
+        run: python3 encrypt_credentials.py
+
+      - name: Build for macOS
+        run: |
+          pyinstaller --windowed \
+          --name="E-HR Mgnt System" \
+          --add-data="images:images" \
+          --add-data="encrypted_credentials.txt:." \
+          --add-data "Admin.py:." \
+          --add-data "Employee.py:." \
+          --add-data "Manager.py:." \
+          --add-data "HR.py:." \
+          main.py
+
+      - name: Install create-dmg
+        run: brew install create-dmg
+
+      - name: Create DMG
+        run: |
+          cd dist
+          create-dmg \
+            --volname "E-HR Mgnt System" \
+            --window-pos 200 120 \
+            --window-size 400 400 \
+            --icon-size 128 \
+            --icon "E-HR Mgnt System.app" 100 150 \
+            --app-drop-link 300 150 \
+            --no-internet-enable \
+            "E-HR Mgnt System(macos-arm).dmg" \
+            "E-HR Mgnt System.app"
+
+      - name: Upload macOS DMG
+        uses: actions/upload-artifact@v4
+        with:
+          name: Hangman(macOS arm)
+          path: dist/E-HR Mgnt System(macos-arm).dmg
+     
+  build-linux-x64:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Create credentials file
+        run: echo '${{ secrets.CREDENTIALS_JSON }}' > credentials.json
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Generate encrypted credentials
+        run: python encrypt_credentials.py
+
+      - name: Install pyinstaller
+        run: pip install pyinstaller
+
+      - name: Build for Linux x64
+        run: |
+          pyinstaller --onefile --clean --name "E-HR Mgnt System" \
+          --add-data="images:images" \
+          --add-data="encrypted_credentials.txt:." \
+          --add-data="Admin.py:." \
+          --add-data="Employee.py:." \
+          --add-data="Manager.py:." \
+          --add-data="HR.py:." \
+          main.py
+          mv dist/"E-HR Mgnt System" "E-HR Mgnt System(linux x64)"
+
+      - name: Upload Linux x64 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: E-HR Mgnt System(linux x64)
+          path: "E-HR Mgnt System(linux x64)"
+
+  build-linux-arm:
+    runs-on: ubuntu-22.04-arm
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Create credentials file
+        run: echo '${{ secrets.CREDENTIALS_JSON }}' > credentials.json
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Generate encrypted credentials
+        run: python encrypt_credentials.py
+
+      - name: Install pyinstaller
+        run: pip install pyinstaller
+
+      - name: Build for Linux arm
+        run: |
+          pyinstaller --onefile --clean --name "E-HR Mgnt System" \
+          --add-data="images:images" \
+          --add-data="encrypted_credentials.txt:." \
+          --add-data="Admin.py:." \
+          --add-data="Employee.py:." \
+          --add-data="Manager.py:." \
+          --add-data="HR.py:." \
+          main.py
+          mv dist/"E-HR Mgnt System" "E-HR Mgnt System(linux arm)"
+
+      - name: Upload Linux arm artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: E-HR Mgnt System(linux arm)
+          path: "E-HR Mgnt System(linux arm)"
+
+  build-windows-x64:
+    runs-on: windows-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Create credentials file
+        run: |
+          echo '${{ secrets.CREDENTIALS_JSON }}' > credentials.json
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Generate encrypted credentials
+        run: python encrypt_credentials.py
+
+      - name: Install pyinstaller
+        run: pip install pyinstaller
+
+      - name: Build for Windows x64
+        run: |
+             pyinstaller --onefile --windowed --name="E-HR Mgnt System" \
+             --add-data="images;images" \
+             --add-data="encrypted_credentials.txt;." \
+             --add-data="Admin.py;." \
+             --add-data="Employee.py;." \
+             --add-data="Manager.py;." \
+             --add-data="HR.py;." \
+             main.py
+
+      - name: Upload Windows Installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: E-HR Mgnt System(windows x64)
+          path: dist/E-HR Mgnt System.exe
