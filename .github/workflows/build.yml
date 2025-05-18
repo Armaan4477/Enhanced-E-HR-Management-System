@@ -55,7 +55,7 @@ jobs:
       - name: Upload macOS DMG
         uses: actions/upload-artifact@v4
         with:
-          name: Hangman(macOS x64)
+          name: E-HR Mgnt System(macOS x64)
           path: dist/E-HR Mgnt System(macos-x64).dmg
 
   build-macos-arm:
@@ -107,7 +107,7 @@ jobs:
       - name: Upload macOS DMG
         uses: actions/upload-artifact@v4
         with:
-          name: Hangman(macOS arm)
+          name: E-HR Mgnt System(macOS arm)
           path: dist/E-HR Mgnt System(macos-arm).dmg
      
   build-linux-x64:
