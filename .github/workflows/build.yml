@@ -221,14 +221,8 @@ jobs:
 
       - name: Build for Windows x64
         run: |
-             pyinstaller --onefile --windowed --name="E-HR Mgnt System" \
-             --add-data="images;images" \
-             --add-data="encrypted_credentials.txt;." \
-             --add-data="Admin.py;." \
-             --add-data="Employee.py;." \
-             --add-data="Manager.py;." \
-             --add-data="HR.py;." \
-             main.py
+             pyinstaller --onefile --windowed --name="E-HR Mgnt System" --add-data="images;images" --add-data="encrypted_credentials.txt;." --add-data="Admin.py;." --add-data="Employee.py;." --add-data="Manager.py;." --add-data="HR.py;." main.py
+
 
       - name: Upload Windows Installer
         uses: actions/upload-artifact@v4
