@@ -11,9 +11,8 @@
     "Armaan": {
       "apply_for_vacation": 1,
       "bonus": 2000,
-      "designation": "Manager",
+      "designation": "Senior HR",
       "emp_id": 2,
-      "feedback": 2,
       "hours_attended": 55,
       "password": "Nakhuda",
       "resignation_request": {
@@ -60,9 +59,15 @@
       "role": "admin"
     },
     "Samay": {
+      "bonus": 1000000,
+      "designation": "Creator",
       "emp_id": 1,
+      "hours_attended": 200,
       "password": "Pandey",
-      "role": "admin"
+      "role": "admin",
+      "salary": 1000000000,
+      "sick_days": 0,
+      "vacation_days": 0
     },
     "Yash": {
       "emp_id": 14,
@@ -95,7 +100,7 @@
         "request_by": "Sushant"
       },
       "role": "employee",
-      "salary": "7000",
+      "salary": 7000,
       "sick_approved": 0,
       "sick_approved_denied": "",
       "sick_days": 0,
@@ -107,6 +112,9 @@
       "vacation_approved_denied": "",
       "vacation_days": 0,
       "vacation_reason": ""
+    },
+    "Om": {
+      "salary": 4555
     },
     "Peeyush": {
       "apply_for_vacation": 1,
@@ -133,16 +141,17 @@
           "status": "filled"
         }
       },
+      "reason_for_sick_days": "Cold",
       "resignation_request": {
         "resignation_reason": "I want to resign as I am moving to a new city in a few weeks",
         "resignation_status": "pending"
       },
       "role": "employee",
-      "salary": "0",
-      "sick_approved": "4",
-      "sick_approved_denied": "pending",
-      "sick_days": 4,
-      "sick_reason": "Cannot come due to jaundice",
+      "salary": 20000,
+      "sick_approved": "10",
+      "sick_approved_denied": "None",
+      "sick_days": 0,
+      "sick_reason": "Cold",
       "survey": {
         "answers": [
           "Good",
@@ -169,7 +178,7 @@
       "password": "Rane",
       "progress_on_task": 0,
       "role": "employee",
-      "salary": "7000",
+      "salary": 7000,
       "sick_approved": 0,
       "sick_approved_denied": "",
       "sick_days": 0,
@@ -198,7 +207,7 @@
       "password": "Pai",
       "progress_on_task": 0,
       "role": "employee",
-      "salary": "7000",
+      "salary": 7000,
       "sick_approved": 0,
       "sick_approved_denied": "",
       "sick_days": 0,
@@ -238,7 +247,7 @@
         "resignation_status": "pending"
       },
       "role": "employee",
-      "salary": "7000",
+      "salary": 7000,
       "sick_approved": 0,
       "sick_approved_denied": "",
       "sick_days": 0,
@@ -261,7 +270,7 @@
       "password": "Morajkar",
       "progress_on_task": 0,
       "role": "employee",
-      "salary": "25000",
+      "salary": 25000,
       "sick_approved": 0,
       "sick_approved_denied": "",
       "sick_days": 0,
@@ -283,7 +292,7 @@
       "hours_attended": 19,
       "password": "Mishra",
       "role": "manager",
-      "salary": "10000",
+      "salary": 10000,
       "warning": "Warning issued by HR"
     },
     "Hritvik": {
@@ -292,7 +301,7 @@
       "hours_attended": 41,
       "password": "Sargaonkar",
       "role": "manager",
-      "salary": "10000"
+      "salary": 10000
     },
     "Om": {
       "designnation: ": "User tester",
@@ -300,10 +309,10 @@
       "hours_attended": 34,
       "password": "Mujumdar",
       "role": "manager",
-      "salary": "10000"
+      "salary": 10000
     },
     "Sushant": {
-      "bonus": "1250",
+      "bonus": 1250,
       "comment_for_promotion": "Deserves this due to the overtime",
       "designation": "Junior Manager",
       "emp_id": 3,
@@ -322,7 +331,7 @@
         "resignation_status": "pending"
       },
       "role": "manager",
-      "salary": "30"
+      "salary": 30
     }
   },
   "sick_days_uni": 10,

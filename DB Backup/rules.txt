@@ -1,0 +1,26 @@
+{
+  "rules": {
+    ".read": "auth != null",
+    ".write": "auth != null",
+    "admins": {
+      ".read": true,
+      ".write": "auth != null && root.child('admins').child(auth.token.email.replace('.', ',')).exists()"
+    },
+    "HR": {
+      ".read": "auth != null",
+      ".write": "auth != null && (root.child('admins').child(auth.token.email.replace('.', ',')).exists() || root.child('HR').child(auth.token.email.replace('.', ',')).exists())"
+    },
+    "manager": {
+      ".read": "auth != null",
+      ".write": "auth != null && (root.child('admins').child(auth.token.email.replace('.', ',')).exists() || root.child('HR').child(auth.token.email.replace('.', ',')).exists())"
+    },
+    "employee": {
+      ".read": "auth != null",
+      ".write": "auth != null"
+    },
+    "Survey_Qs": {
+      ".read": "auth != null",
+      ".write": "auth != null && (root.child('admins').child(auth.token.email.replace('.', ',')).exists() || root.child('HR').child(auth.token.email.replace('.', ',')).exists())"
+    }
+  }
+}

@@ -17,6 +17,7 @@ from firebase_admin import db, credentials
 import threading
 from tkinter import Label
 from tkinter import Tk, Canvas, PhotoImage
+import json
 
 # Global variable to track Firebase initialization
 firebase_initialized = False
@@ -33,17 +34,28 @@ def initialize_firebase():
     global firebase_initialized
     if not firebase_initialized:
         # Initialize Firebase Admin SDK
-        cred = credentials.Certificate(resource_path("credentials.json"))  # Path: credentials.json
+        cred_path = resource_path("credentials.json")
+        cred = credentials.Certificate(cred_path)
+        
+        # Read database URL from credentials file
+        with open(cred_path, 'r') as f:
+            cred_data = json.load(f)
+            db_url = cred_data.get('databaseURL')
+            
+        if not db_url:
+            messagebox.showerror("Configuration Error", "Database URL not found in credentials.json")
+            sys.exit(1)
+            
         firebase_admin.initialize_app(
             cred,
             {
-                "databaseURL": "############" ## Replace ############ with your database URL also below
+                "databaseURL": db_url
             },
         )
         firebase_initialized = True
         # Check if there is a connection to the Firebase Realtime Database and time out after 10 seconds
         try:
-            response = requests.get("############", timeout=10) ## Replace ############ with your database URL
+            response = requests.get(db_url, timeout=10)
             if response.status_code == 200:
                 print("Connected to Firebase Realtime Database")
         except requests.exceptions.RequestException:
